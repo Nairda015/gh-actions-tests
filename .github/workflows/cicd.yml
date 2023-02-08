@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
     inputs:
       workflow_type:
-        description: 'workflow type'
         required: true
         type: choice
         options:
@@ -18,7 +17,7 @@ jobs:
     steps:
     
       - name: Print vars
-        run: echo ${{ $workflow_type == 'pull_request' }} 
+        run: echo ${{ github.event.inputs.workflow_type == 'pull_request' }} 
       
       - name: Checkout
         uses: actions/checkout@v3.3.0
@@ -50,7 +49,7 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: ${{ secrets.APP_VERSION }}
-          prerelease: ${{ $workflow_type == 'pull_request' }} 
+          prerelease: ${{ github.event.inputs.workflow_type == 'pull_request' }} 
           title: "Release version: ${{ secrets.APP_VERSION }}"
 
       - name: Dotnet Pack

@@ -15,18 +15,13 @@ jobs:
   cd:
 
     runs-on: ubuntu-latest
-    env:
-      IS_PRERELEASE: ${{ workflow_type == 'pull_request' }}  
-    timeout-minutes: 10
-    strategy:
-      fail-fast: true
     steps:
     
       - name: Print vars
-        run: echo $IS_PRERELEASE
+        run: echo ${{ workflow_type == 'pull_request' }} 
       
       - name: Checkout
-      - uses: actions/checkout@v3.3.0
+        uses: actions/checkout@v3.3.0
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
@@ -55,7 +50,7 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: ${{ secrets.APP_VERSION }}
-          prerelease: $IS_PRERELEASE
+          prerelease: ${{ workflow_type == 'pull_request' }} 
           title: "Release version: ${{ secrets.APP_VERSION }}"
 
       - name: Dotnet Pack

@@ -84,18 +84,18 @@ jobs:
           path: packages
           name: nuget-packages          
           
-      - name: Add tag
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v6.1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          custom_tag: "${{ secrets.APP_VERSION }}-pre.1"
+   #   - name: Add tag
+   #     id: tag_version
+   #     uses: mathieudutour/github-tag-action@v6.1
+   #     with:
+   #       github_token: ${{ secrets.GITHUB_TOKEN }}
+   #       custom_tag: "${{ secrets.APP_VERSION }}-pre.1"
       
       - name: Create a Github Release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "${{ secrets.APP_VERSION }}-pre.2"
+          automatic_release_tag: "${{ secrets.APP_VERSION }}"
           prerelease: false
           title: "Release version: ${{ secrets.APP_VERSION }}"
           

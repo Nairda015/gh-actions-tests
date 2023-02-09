@@ -18,16 +18,16 @@ jobs:
   print:
     runs-on: ubuntu-latest
     steps:
+      
+      - name: set varsion
+        run: echo "VERSION=${{ github.event.inputs.custom_version }}" >> $GITHUB_ENV
           
       - name: get version
         id: get_version
         shell: bash
         run: |
-          echo ${{ github.event.inputs.custom_version }}
-          if [[ ${{ github.event.inputs.custom_version = "" }} ]]; then
+          if [[ $VERSION == '' ]]; then
             echo "VERSION=bug" >> $GITHUB_OUTPUT
-          else
-            echo "VERSION=${{ github.event.inputs.custom_version }}" >> $GITHUB_OUTPUT
           fi  
         
       - run: echo ${{ steps.get_version.outputs.VERSION }}

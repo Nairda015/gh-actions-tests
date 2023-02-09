@@ -9,6 +9,8 @@ on:
         options:
         - 'pull_request'
         - 'main'
+  push:
+    branches: [ main ]
 
 #defaults:
 # run:

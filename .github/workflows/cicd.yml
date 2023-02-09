@@ -99,3 +99,15 @@ jobs:
           prerelease: ${{ github.event.inputs.workflow_type == 'pull_request' }} 
           title: "Release version: ${{ secrets.APP_VERSION }}"
           
+#  - name: Extract branch name
+#    shell: bash
+#    run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+#    id: extract_branch
+#
+#  - name: Determine version type
+#    uses: haya14busa/action-cond@v1
+#    id: version_type
+#    with:
+#      cond: $IS_PRERELEASE
+#      if_true: 'feature'
+#      if_false: 'pre'

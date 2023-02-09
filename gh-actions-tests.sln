@@ -4,13 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gh-actions-tests", "gh-acti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gh-actions-tests.tests", "gh-actions-tests.tests\gh-actions-tests.tests.csproj", "{79CED096-C0A9-4349-98E8-0F79886679B1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{45ECF02A-D42D-4F60-BB50-FBA6F4BB1AB2}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{0B163111-4B05-45BF-9ED0-363CE8174DCD}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\cicd.yml = .github\workflows\cicd.yml
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +20,5 @@ Global
 		{79CED096-C0A9-4349-98E8-0F79886679B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0B163111-4B05-45BF-9ED0-363CE8174DCD} = {45ECF02A-D42D-4F60-BB50-FBA6F4BB1AB2}
 	EndGlobalSection
 EndGlobal

@@ -23,7 +23,7 @@ jobs:
         if: ${{ github.event.inputs.custom_version == '' }}
         run: echo "VERSION=feature" >> $GITHUB_ENV
         
-      - run: echo "$VERSION"
+      - run: echo ${{ env.VERSION }}
       
       
       

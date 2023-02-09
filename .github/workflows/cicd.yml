@@ -10,7 +10,7 @@ on:
         - 'pull_request'
         - 'main'
       custom_version:
-        required: false
+        required: true
         default: bug
         type: choice
         options:

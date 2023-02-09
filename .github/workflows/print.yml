@@ -22,12 +22,16 @@ jobs:
       version: ${{ steps.custom_version.outputs.version }}
     
     steps:
-
-      - id: get_version
-        run: |
-          echo "::set-output name=value::bug"
+          
+      - name: Set color
+        id: get_version
+        run: echo "VERSION=major" >> $GITHUB_OUTPUT
+        
+      - name: Get color
+        run: echo "The selected color is ${{ steps.get_version.outputs.VERSION }}"
+          
       
-      - run: echo ${{ needs.print.outputs.version }}
+      - run: echo ${{ steps.get_version.outputs.VERSION }}
       
       
       

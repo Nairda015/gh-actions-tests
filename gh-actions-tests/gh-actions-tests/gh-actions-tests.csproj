@@ -5,6 +5,7 @@
         <RootNamespace>gh_actions_tests</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
 </Project>

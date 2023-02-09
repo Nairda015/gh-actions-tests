@@ -9,6 +9,14 @@ on:
         options:
         - 'pull_request'
         - 'main'
+      custom_version:
+        required: false
+        default: 'bug'
+        type: choice
+        options:
+        - 'feature'
+        - 'bug'
+        - 'major'
 #      branch_name:
 #        required: true
 #        type: string
@@ -27,6 +35,8 @@ jobs:
     #${{ github.event.inputs.workflow_type == 'pull_request' }} 
     permissions: write-all
     steps:
+      
+      - run: echo ${{ github.event.inputs.custom_version }}
       
       - name: Checkout
         uses: actions/checkout@v3.3.0

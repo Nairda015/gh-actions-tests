@@ -17,5 +17,18 @@ on:
 jobs:
   print:
     runs-on: ubuntu-latest
+    
+    outputs:
+      version: ${{ steps.custom_version.outputs.version }}
+    
     steps:
-      - run: echo ${{ github.event.inputs.custom_version }}
+
+      - id: get_version
+        run: |
+          echo "::set-output name=value::bug"
+      
+      - run: echo ${{ needs.print.outputs.version }}
+      
+      
+      
+      

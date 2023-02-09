@@ -9,6 +9,10 @@ on:
         options:
         - 'pull_request'
         - 'main'
+      branch_name:
+        required: true
+        type: string
+        
   push:
     branches: [ main ]
 
@@ -29,6 +33,10 @@ jobs:
         
 #      - name: Debug
 #        run: tree
+      - name: validate branch name
+        uses: ./.github/workflows/validate-branch-name
+        with:
+          branch_name: ${{ github.event.inputs.branch_name }}
       
       - name: Determine version type
         uses: haya14busa/action-cond@v1

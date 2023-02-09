@@ -12,8 +12,7 @@ on:
 
 defaults:
  run:
-  working-directory: ./gh-actions-tests
-
+  working-directory: ../
 jobs:
   cd:
 

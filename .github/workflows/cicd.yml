@@ -57,7 +57,7 @@ jobs:
       
       - name: Bump version
         id: bump_version
-        uses: christian-draeger/increment-semantic-version@1.0.2
+        uses: christian-draeger/increment-semantic-version@1.1.0
         with:
           current-version: ${{ secrets.APP_VERSION }}
           version-fragment: ${{ steps.version_type.outputs.value }}

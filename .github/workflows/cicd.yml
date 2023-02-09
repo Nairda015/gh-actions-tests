@@ -35,11 +35,11 @@ jobs:
         id: version_type
         with:
           cond: ${{ github.event.inputs.workflow_type == 'pull_request' }} 
-          if_true: 'bug'
-          if_false: 'pre'
+          if_true: 'pre'
+          if_false: 'bug' #feature
           
-      - name: print version
-        run: echo ${{ github.event.inputs.workflow_type }} ${{ github.event.inputs.workflow_type == 'pull_request' }} ${{ steps.version_type.outputs.value }}
+
+      - run: echo ${{ github.event.inputs.workflow_type }} ${{ github.event.inputs.workflow_type == 'pull_request' }} ${{ steps.version_type.outputs.value }}
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3

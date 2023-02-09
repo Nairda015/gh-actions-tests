@@ -17,20 +17,19 @@ on:
 jobs:
   print:
     runs-on: ubuntu-latest
-    
-    outputs:
-      version: ${{ steps.custom_version.outputs.version }}
-    
     steps:
           
-      - name: Set color
+      - name: get version
         id: get_version
-        run: echo "VERSION=major" >> $GITHUB_OUTPUT
+        shell: bash
+        run: |
+          echo ${{ github.event.inputs.custom_version }}
+          if [[ ${{ github.event.inputs.custom_version }} = "" ]]; then
+            echo "VERSION=bug" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=${{ github.event.inputs.custom_version }}" >> $GITHUB_OUTPUT
+          fi  
         
-      - name: Get color
-        run: echo "The selected color is ${{ steps.get_version.outputs.VERSION }}"
-          
-      
       - run: echo ${{ steps.get_version.outputs.VERSION }}
       
       

@@ -10,9 +10,10 @@ on:
         - 'pull_request'
         - 'main'
 
-defaults:
- run:
-  working-directory: ../
+#defaults:
+# run:
+#  working-directory: ../
+  
 jobs:
   cd:
 
@@ -22,7 +23,10 @@ jobs:
     steps:
       
       - name: Debug
-        run: ls
+        run: |
+          sudo apt-get install tree
+          cd ../../../../
+          tree
       
       - name: Checkout
         uses: actions/checkout@v3.3.0

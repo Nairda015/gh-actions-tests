@@ -34,7 +34,7 @@ jobs:
 #      - name: Debug
 #        run: tree
       - name: validate branch name
-        uses: ./.github/workflows/validate-branch-name
+        uses: ./.github/actions/validate-branch-name
         with:
           branch_name: ${{ github.event.inputs.branch_name }}
       

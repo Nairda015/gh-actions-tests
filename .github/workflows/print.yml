@@ -1,0 +1,21 @@
+name: print
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      custom_version:
+        required: true
+        default: 'bug'
+        type: choice
+        options:
+        - 'feature'
+        - 'bug'
+        - 'major'
+  
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.event.inputs.custom_version }}

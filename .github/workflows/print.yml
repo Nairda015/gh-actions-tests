@@ -23,7 +23,7 @@ jobs:
         if: ${{ github.event.inputs.custom_version == '' }}
         run: echo "VERSION=bug" >> $GITHUB_ENV
         
-      - run: echo ${{ steps.get_version.outputs.VERSION }}
+      - run: echo $VERSION
       
       
       

@@ -28,6 +28,12 @@ jobs:
       
       - name: Restore dependencies
         run: dotnet restore
+        
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+
+      - name: Test
+        run: dotnet test /p:Configuration=Release --no-build --verbosity normal
       
       - name: Bump version
         id: bump_version

@@ -11,12 +11,12 @@ on:
         - 'main'
       custom_version:
         required: false
-        default: 'bug'
+        default: bug
         type: choice
         options:
-        - 'feature'
-        - 'bug'
-        - 'major'
+        - feature
+        - bug
+        - major
 #      branch_name:
 #        required: true
 #        type: string

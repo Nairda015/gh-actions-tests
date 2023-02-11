@@ -21,22 +21,30 @@ on:
         options:
         - 'true'
         - 'false'
+env:
+  VERSION: ${{ github.event.inputs.custom_version }}"
+  IS_PRERELEASE: ${{ github.event.inputs.is_prerelease }}  
+  NEXT_VERSION: 1.0.0
   
 jobs:
-  print:
+  print_version:
     runs-on: ubuntu-latest
     steps:
           
-      - run: echo "VERSION=${{ github.event.inputs.custom_version }}" >> $GITHUB_ENV
+#      - run: echo "VERSION=${{ github.event.inputs.custom_version }}" >> $GITHUB_ENV
       - name: override custom_version
         if: ${{ github.event.inputs.custom_version == '' }}
         run: echo "VERSION=feature" >> $GITHUB_ENV
         
       - run: echo ${{ env.VERSION }}
-        
+      
+  print_is_prerelease:
+    runs-on: ubuntu-latest
+    steps:    
+    
       - name: print is_prerelease
         run: echo ${{ github.event.inputs.is_prerelease }}  
-      
+    
       - run: echo "IS_PRERELEASE=${{ github.event.inputs.is_prerelease }}" >> $GITHUB_ENV
       - name: override is_prerelease
         if: ${{ github.event.inputs.is_prerelease == '' }}
@@ -44,13 +52,18 @@ jobs:
 
       - run: echo ${{ env.IS_PRERELEASE }}
       
+  bump_version:
+    runs-on: ubuntu-latest
+    needs: [ print_version, print_is_prerelease ]
+    steps:   
+    
       - name: bump version
         id: bump_version
         uses: christian-draeger/increment-semantic-version@1.0.2
         with:
           current-version: 1.0.0
           version-fragment: ${{ env.VERSION }}
-          
+      
       - run: echo "NEXT_VERSION=${{ steps.bump_version.outputs.next-version }}" >> $GITHUB_ENV
       - run: echo ${{ env.NEXT_VERSION}}
       

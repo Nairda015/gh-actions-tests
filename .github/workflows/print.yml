@@ -55,11 +55,14 @@ jobs:
         if: ${{ env.IS_PRERELEASE }}
         uses: christian-draeger/increment-semantic-version@1.0.2
         with:
-          current-version: ${{ secrets.APP_VERSION }}
+          current-version: ${{ env.NEXT_VERSION }}
           version-fragment: 'rc'
-          
+        
       - run: echo "NEXT_VERSION_RC=${{ steps.mark_as_rc.outputs.next-version }}" >> $GITHUB_ENV
-      - run: echo ${{ env.NEXT_VERSION_RC}}    
+        if: ${{ env.IS_PRERELEASE }}
+        
+      - run: echo ${{ env.NEXT_VERSION_RC}}  
+        if: ${{ env.IS_PRERELEASE }}
       
       
       

@@ -24,15 +24,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
           
-      - name: override
+      - name: override custom_version
         if: ${{ github.event.inputs.custom_version == '' }}
         run: echo "VERSION=feature" >> $GITHUB_ENV
         
       - run: echo ${{ env.VERSION }}
         
-      - name: override bool
+      - name: print is_prerelease
+        run: echo ${{ github.event.inputs.is_prerelease }}  
+      
+      - name: override is_prerelease
         if: ${{ github.event.inputs.is_prerelease == '' }}
-        run: echo "IS_PRERELEASE=feature" >> $GITHUB_ENV
+        run: echo "IS_PRERELEASE=false" >> $GITHUB_ENV
 
       - run: echo ${{ env.IS_PRERELEASE }}
       

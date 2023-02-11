@@ -16,10 +16,9 @@ jobs:
         id: init
         run: echo "stageEnv=456" >> $GITHUB_OUTPUT
       
-      - run: |
-          echo ${{ env.stageEnv }}
-          echo "stageEnv=456" >> $GITHUB_ENV
-          echo ${{ env.stageEnv }}
+      - run: echo ${{ env.stageEnv }}
+      - run: echo "stageEnv=456" >> $GITHUB_ENV
+      - run: echo ${{ env.stageEnv }}
 
   job2:
     runs-on: ubuntu-latest

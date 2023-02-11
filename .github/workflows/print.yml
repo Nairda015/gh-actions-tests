@@ -13,6 +13,11 @@ on:
         - 'feature'
         - 'bug'
         - 'major'
+        - 'minor'      
+      is_prerelease:
+        required: true
+        default: false
+        type: boolean
   
 jobs:
   print:
@@ -24,6 +29,12 @@ jobs:
         run: echo "VERSION=feature" >> $GITHUB_ENV
         
       - run: echo ${{ env.VERSION }}
+        
+      - name: override bool
+        if: ${{ github.event.inputs.custom_version == '' }}
+        run: echo "is_prerelease=feature" >> $GITHUB_ENV
+
+      - run: echo ${{ env.is_prerelease }}
       
       
       

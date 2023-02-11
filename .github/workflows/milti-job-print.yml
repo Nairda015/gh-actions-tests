@@ -15,8 +15,9 @@ jobs:
     - name: Access the global environment variable
       run: echo "MY_VAR is set to ${{ env.MY_VAR }}"
       
-      run: echo "MY_VAR=value2" >> $GITHUB_ENV
-      run: echo "MY_VAR2=value3" >> $GITHUB_ENV
+    - run: echo "MY_VAR=value2" >> $GITHUB_ENV
+   
+    - run: echo "MY_VAR2=value3" >> $GITHUB_ENV
 
   job2:
     runs-on: ubuntu-latest

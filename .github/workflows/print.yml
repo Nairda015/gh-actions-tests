@@ -17,10 +17,7 @@ on:
       is_prerelease:
         required: true
         default: false
-        type: choice
-        options:
-        - 'false'
-        - 'true'
+        type: boolean
   
 jobs:
   print:
@@ -37,6 +34,7 @@ jobs:
       - name: print is_prerelease
         run: echo ${{ github.event.inputs.is_prerelease }}  
       
+      - run: echo "IS_PRERELEASE=${{ github.event.inputs.is_prerelease }}" >> $GITHUB_ENV
       - name: override is_prerelease
         if: ${{ github.event.inputs.is_prerelease == '' }}
         run: echo "IS_PRERELEASE=false" >> $GITHUB_ENV
@@ -55,17 +53,17 @@ jobs:
       
       - name: bump version
         id: mark_as_rc
-        if: ${{ env.IS_PRERELEASE == 'true' }}
+        if: ${{ env.IS_PRERELEASE }}
         uses: christian-draeger/increment-semantic-version@1.0.2
         with:
           current-version: ${{ env.NEXT_VERSION }}
           version-fragment: 'rc'
         
       - run: echo "NEXT_VERSION_RC=${{ steps.mark_as_rc.outputs.next-version }}" >> $GITHUB_ENV
-        if: ${{ env.IS_PRERELEASE == 'true' }}
+        if: ${{ env.IS_PRERELEASE }}
         
       - run: echo ${{ env.NEXT_VERSION_RC}}  
-        if: ${{ env.IS_PRERELEASE == 'true' }}
+        if: ${{ env.IS_PRERELEASE }}
       
       
       

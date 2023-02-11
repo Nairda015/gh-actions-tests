@@ -1,0 +1,24 @@
+name: milti-job-print
+
+push:
+  branches: [ main ]
+
+env:
+  MY_VAR: "value"
+ 
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Access the global environment variable
+      run: echo "MY_VAR is set to ${{ env.MY_VAR }}"
+      
+      run: echo "MY_VAR=value2" >> $GITHUB_ENV
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: [ job1 ]
+    steps:
+    - name: Access the global environment variable
+      run: echo "MY_VAR is set to ${{ env.MY_VAR }}"

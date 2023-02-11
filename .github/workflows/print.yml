@@ -47,7 +47,7 @@ jobs:
           version-fragment: ${{ env.VERSION }}
           
       - run: echo "NEXT_VERSION=${{ steps.bump_version.outputs.next-version }}" >> $GITHUB_ENV
-      - run: echo ${{ NEXT_VERSION}}
+      - run: echo ${{ env.NEXT_VERSION}}
       
       - name: bump version
         id: mark_as_rc
@@ -58,7 +58,7 @@ jobs:
           version-fragment: 'rc'
           
       - run: echo "NEXT_VERSION_RC=${{ steps.mark_as_rc.outputs.next-version }}" >> $GITHUB_ENV
-      - run: echo ${{ NEXT_VERSION_RC}}    
+      - run: echo ${{ env.NEXT_VERSION_RC}}    
       
       
       

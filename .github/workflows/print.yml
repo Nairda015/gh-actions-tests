@@ -31,10 +31,10 @@ jobs:
       - run: echo ${{ env.VERSION }}
         
       - name: override bool
-        if: ${{ github.event.inputs.custom_version == '' }}
-        run: echo "is_prerelease=feature" >> $GITHUB_ENV
+        if: ${{ github.event.inputs.is_prerelease == '' }}
+        run: echo "IS_PRERELEASE=feature" >> $GITHUB_ENV
 
-      - run: echo ${{ env.is_prerelease }}
+      - run: echo ${{ env.IS_PRERELEASE }}
       
       
       

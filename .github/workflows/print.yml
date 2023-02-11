@@ -24,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
           
+      - run: echo "VERSION=${{ github.event.inputs.custom_version }}" >> $GITHUB_ENV
       - name: override custom_version
         if: ${{ github.event.inputs.custom_version == '' }}
         run: echo "VERSION=feature" >> $GITHUB_ENV

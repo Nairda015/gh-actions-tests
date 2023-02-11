@@ -16,8 +16,9 @@ jobs:
     steps:       
       - name: Make environment variables global 
         id: init
-        run: |
-          echo "stageEnv=456" >> $GITHUB_OUTPUT
+        run: echo "stageEnv=456" >> $GITHUB_OUTPUT
+        
+      - run: echo ${{ env.stageEnv }}
 
   job2:
     runs-on: ubuntu-latest

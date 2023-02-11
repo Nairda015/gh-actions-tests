@@ -12,8 +12,8 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      my-var1: ${{ steps.step1.outputs.MY_VAR }}
-      my-var2: ${{ steps.step2.outputs.MY_VAR2 }}
+      myvar1: ${{ steps.step1.outputs.MY_VAR3 }}
+      myvar2: ${{ steps.step2.outputs.MY_VAR4 }}
     steps:
   
     - name: Access the global environment variable
@@ -21,6 +21,9 @@ jobs:
       run: echo "MY_VAR is set to ${{ env.MY_VAR }}"
       
     - run: echo "MY_VAR=value2" >> $GITHUB_ENV
+    
+    - run: echo "MY_VAR3=green" >> $GITHUB_OUTPUT
+    - run: echo "MY_VAR4=red" >> $GITHUB_OUTPUT
       
    
     - run: echo "MY_VAR2=value3" >> $GITHUB_ENV
@@ -33,4 +36,4 @@ jobs:
     - name: Access the global environment variable
       run: echo "MY_VAR is set to ${{ env.MY_VAR }}"
       
-    - run: echo ${{needs.job1.outputs.my-var1}} ${{needs.job1.outputs.my-var2}}  
+    - run: echo ${{needs.job1.outputs.myvar1}} ${{needs.job1.outputs.myvar2}}  

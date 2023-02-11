@@ -62,10 +62,10 @@ jobs:
           current-version: ${{ env.NEXT_VERSION }}
           version-fragment: 'rc'
         
-      - run: echo "NEXT_VERSION_RC=${{ steps.mark_as_rc.outputs.next-version }}" >> $GITHUB_ENV
+      - run: echo "NEXT_VERSION=${{ steps.mark_as_rc.outputs.next-version }}" >> $GITHUB_ENV
         if: ${{ env.IS_PRERELEASE == 'true' }}
         
-      - run: echo ${{ env.NEXT_VERSION_RC}}  
+      - run: echo ${{ env.NEXT_VERSION}}  
         if: ${{ env.IS_PRERELEASE == 'true' }}
       
       
